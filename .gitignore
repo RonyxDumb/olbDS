@@ -1,0 +1,5 @@
+build/
+*.elf
+*.nds
+!release/*.nds
+__pycache__/

@@ -1,0 +1,52 @@
+name: Build NDS
+
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Tag of the release to publish (e.g. v1.0.0), empty = build only'
+        required: false
+        default: ''
+      notes:
+        description: 'Short changelog for the release'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: devkitpro/devkitarm:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: make
+      - uses: actions/upload-artifact@v4
+        with:
+          name: WWCD_DS
+          path: WWCD_DS.nds
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v') || github.event.inputs.release_tag != ''
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: WWCD_DS
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.release_tag || github.ref_name }}
+          target_commitish: ${{ github.sha }}
+          name: WWCD DS ${{ github.event.inputs.release_tag || github.ref_name }}
+          files: WWCD_DS.nds
+          body: |
+            Nintendo DS port of the FNF mod Winner Winner Chicken Dinner. Play `WWCD_DS.nds` on a flashcart or in melonDS.
+
+            ${{ github.event.inputs.notes }}
