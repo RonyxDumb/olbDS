@@ -9,6 +9,10 @@ endif
 
 include $(DEVKITARM)/ds_rules
 
+# own header title / game code, so launchers and emulators do not mix it up
+# with other homebrew (icon caches keyed by the HOMEBREW/#### header)
+_ADDFILES	+=	-g OLBD 00 "ONELASTBITE"
+
 TARGET		:=	WWCD_DS
 BUILD		:=	build
 SOURCES		:=	source
