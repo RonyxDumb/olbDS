@@ -44,7 +44,7 @@ jobs:
         with:
           tag_name: ${{ github.event.inputs.release_tag || github.ref_name }}
           target_commitish: ${{ github.sha }}
-          name: WWCD DS ${{ github.event.inputs.release_tag || github.ref_name }}
+          name: One Last Bite DS ${{ github.event.inputs.release_tag || github.ref_name }}
           files: WWCD_DS.nds
           body: |
             Nintendo DS port of the FNF mod Winner Winner Chicken Dinner. Play `WWCD_DS.nds` on a flashcart or in melonDS.

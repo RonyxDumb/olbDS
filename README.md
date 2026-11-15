@@ -1,4 +1,4 @@
-# WWCD DS
+# One Last Bite DS
 
 A Nintendo DS port of the Friday Night Funkin' mod **Winner Winner Chicken Dinner** ("ONE LAST BITE!", [GameBanana](https://gamebanana.com/mods/640444)), a fan-made Codename Engine mod based on [Twiddlefinger](https://github.com/RonyxDumb/twiddleDS).
 

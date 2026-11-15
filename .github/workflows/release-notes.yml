@@ -25,4 +25,4 @@ jobs:
           NOTES: ${{ github.event.inputs.notes }}
         run: |
           printf 'Nintendo DS port of the FNF mod Winner Winner Chicken Dinner. Play `WWCD_DS.nds` on a flashcart or in melonDS.\n\n%s\n' "$NOTES" > notes.md
-          gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --title "WWCD DS $TAG" --notes-file notes.md
+          gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --title "One Last Bite DS $TAG" --notes-file notes.md

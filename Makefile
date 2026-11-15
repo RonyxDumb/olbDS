@@ -17,8 +17,8 @@ INCLUDES	:=	include
 MUSIC		:=	maxmod_data
 NITRODATA	:=	nitrofiles
 
-GAME_TITLE	:=	WWCD DS
-GAME_SUBTITLE1	:=	Winner Winner Chicken Dinner
+GAME_TITLE	:=	One Last Bite DS
+GAME_SUBTITLE1	:=	FNF Winner Winner Chicken Dinner
 GAME_SUBTITLE2	:=	Nintendo DS port
 GAME_ICON	:=	$(TOPDIR)/icon.bmp
 
