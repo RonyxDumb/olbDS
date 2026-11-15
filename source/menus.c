@@ -144,9 +144,8 @@ static void cb_reveal(void *c) {
 static void cb_story(void *c) { state_switch(ST_STORY); }
 static void cb_bonus(void *c) { state_switch(ST_BONUS); }
 static void cb_settings(void *c) { state_switch(ST_OPTIONS); }
-static void cb_credits(void *c) { mCredits = true; }
-
 static void m_draw_sub(void);
+static void cb_credits(void *c) { mCredits = true; m_draw_sub(); }
 
 void mainmenu_enter(void) {
 	menu_music(true);
@@ -264,7 +263,7 @@ static const char *credits[] = {
 static void m_draw_sub(void) {
 	sub_header("WINNER WINNER CHICKEN DINNER");
 	if (mCredits) {
-		for (int i = 0; credits[i]; i++) sub_text(FONT_VCR10, 6, 26 + i * 10, credits[i], i == 0 ? RGB(0xF9, 0xCF, 0x51) : TXT);
+		for (int i = 0; credits[i]; i++) sub_text(FONT_VCR10, 6, 25 + i * 9, credits[i], i == 0 ? RGB(0xF9, 0xCF, 0x51) : TXT);
 		sub_text_centered(FONT_VCR10, 128, 182, "B / tap: back", RGB(140, 140, 140));
 		return;
 	}
