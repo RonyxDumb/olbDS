@@ -753,26 +753,32 @@ FONTS = [
 ]
 
 
+MDP_MISSING = '#*/<>[\\]^`{|}~'      # characters mdp.ttf does not have
+FALLBACK = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
+
+
 def convert_fonts():
     H_OUT.append('enum { %s, FONT_COUNT };' % ', '.join('FONT_' + f[0].upper() for f in FONTS))
     names = []
     for nm, path, size, ol in FONTS:
         font = ImageFont.truetype(path, size)
+        fb = ImageFont.truetype(FALLBACK, max(6, size - 2)) if path == MDPF and os.path.exists(FALLBACK) else None
         asc, desc = font.getmetrics()
         lh = asc + desc
         glyphs = []
         for ch in range(32, 127):
             c = chr(ch)
-            adv = int(round(font.getlength(c)))
-            bb = font.getbbox(c)
+            fnt = fb if (fb and c in MDP_MISSING) else font
+            adv = int(round(fnt.getlength(c)))
+            bb = fnt.getbbox(c)
             w = max(1, bb[2] - min(0, bb[0])) + 2 * ol + 4
             gi = Image.new('RGBA', (w, lh + 2 * ol + 4), (0, 0, 0, 0))
             dr = ImageDraw.Draw(gi)
             pos = (2 + ol - min(0, bb[0]), 2 + ol)
             if ol:
-                dr.text(pos, c, font=font, fill=(255, 255, 255, 255), stroke_width=ol, stroke_fill=(0, 0, 0, 255))
+                dr.text(pos, c, font=fnt, fill=(255, 255, 255, 255), stroke_width=ol, stroke_fill=(0, 0, 0, 255))
             else:
-                dr.text(pos, c, font=font, fill=(255, 255, 255, 255))
+                dr.text(pos, c, font=fnt, fill=(255, 255, 255, 255))
             bbx = gi.getchannel('A').getbbox()
             if bbx is None:
                 glyphs.append((ch, None, 0, 0, adv))

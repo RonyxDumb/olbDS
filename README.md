@@ -4,6 +4,12 @@ A Nintendo DS port of the Friday Night Funkin' mod **Winner Winner Chicken Dinne
 
 Same approach as [twiddleDS](https://github.com/RonyxDumb/twiddleDS): this is not Codename Engine running on a DS. The game was rewritten in C with libnds, following the mod's HScript scripts and Codename Engine v1.0.1's PlayState / Character / Conductor behaviour, using the mod's original assets converted for the hardware.
 
+| Menu | One Last Bite | HELP ME | Lyrics | To You |
+| :---: | :---: | :---: | :---: | :---: |
+| ![Menu](docs/screenshots/menu.png) | ![Gameplay](docs/screenshots/gameplay.png) | ![Help me](docs/screenshots/helpme.png) | ![Lyrics](docs/screenshots/lyrics.png) | ![To You](docs/screenshots/toyou.png) |
+
+A prebuilt ROM is in [`release/`](release) and on the [Releases](../../releases) page.
+
 What is ported:
 
 - **Intro** (Rainbow John Productions / Max Design Pro), **main menu** with the eye intro, the secret codes (`soccer`, `retro`, `bubby`) and credits, **story menu**, **bonus menu**, **options** (including the mod's options: lyric subtitles, reset progress, reset soccer scores), **pause menu** and the **"next up"** screen.

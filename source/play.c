@@ -779,7 +779,7 @@ static void draw_pause(void) {
 	float ox = fmodf(pauseBgX, 256) * KDS, oy = fmodf(pauseBgY, 256) * KDS;
 	for (float y = -t + oy; y < 192; y += t)
 		for (float x = -t + ox; x < 256; x += t)
-			sheet_draw(&shPause, PAUSE_PATTERN, x, y, KDS * 2, HEXC(0x3C59FF), A31(0.2f));
+			sheet_draw(&shPause, PAUSE_PATTERN, x, y, KDS, HEXC(0x3C59FF), A31(0.2f));
 	float cx0 = (1280 - 500) / 2.0f;
 	gfx_rect(bx(cx0), 0, bx(cx0 + 500), 192, 0, 31);
 	// pausedText (scale 0.8, no updateHitbox: centered scaling)
